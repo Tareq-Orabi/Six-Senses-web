@@ -9,7 +9,6 @@
   margin-bottom: 24px;
 
   &:hover {
-    
     border-color: var(--accent-border);
   }
   &:focus-visible {
