@@ -7,20 +7,6 @@ import massageImg from '../assets/massageImg.jpeg';
 import redLightTherapyImg from '../assets/redLightTherapyImg.jpeg';
 import sixSensesImg from '../assets/sixSensesImage.jpg';
 
-// New searched images (save these to your assets folder)
-import cuppingImg from '../assets/cuppingImg.jpg';
-import ivDripImg from '../assets/ivDripImg.jpg';
-import acupunctureImg from '../assets/acupunctureImg.jpg';
-import deepTissueImg from '../assets/deepTissueImg.jpg';
-import lymphaticImg from '../assets/lymphaticImg.jpg';
-import reflexologyImg from '../assets/reflexologyImg.jpg';
-import abdominalImg from '../assets/abdominalImg.jpg';
-import oilMassageImg from '../assets/oilMassageImg.jpg';
-import relaxingImg from '../assets/relaxingImg.jpg'; // Using spa room image
-import footDetoxImg from '../assets/footDetoxImg.jpg'; // Using foot reflexology
-import liverImg from '../assets/liverImg.jpg'; // Using liver detox
-import consultationImg from '../assets/consultationImg.jpg'; // Using spa room
-import probioticImg from '../assets/probioticImg.jpg'; // Using gut health
 
 // ─── SERVICE DATA WITH ALL IMAGES ASSIGNED ───
 const SERVICE_DATA = {
