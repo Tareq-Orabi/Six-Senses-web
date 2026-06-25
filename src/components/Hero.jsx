@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import sixSensesVideo from '../assets/sixSensesVideo.MOV';
+
+const videoSrc = `${import.meta.env.BASE_URL}sixSensesVideo.MOV`;
 
 /* ── Floating Particles Component ── */
 function FloatingParticles() {
@@ -247,7 +248,7 @@ export default function Hero() {
 
             {/* Preview Video */}
             <video
-              src={sixSensesVideo}
+              src={videoSrc}
               autoPlay
               muted
               loop
@@ -312,7 +313,7 @@ export default function Hero() {
           <div className="absolute inset-0 z-0" onClick={() => setIsVideoOpen(false)}></div>
           <div className="relative z-10 w-full max-w-[1000px] aspect-video p-4">
             <video
-              src={sixSensesVideo}
+              src={videoSrc}
               autoPlay
               controls
               playsInline

@@ -7,6 +7,10 @@ import massageImg from '../assets/massageImg.jpeg';
 import redLightTherapyImg from '../assets/redLightTherapyImg.jpeg';
 import sixSensesImg from '../assets/sixSensesImage.jpg';
 
+import footDetoxImg from '../assets/footDetoxImg.png';
+import cuppingImg from '../assets/cuppingImg.png';
+import acupunctureImg from '../assets/acupunctureImg.png';
+
 
 // ─── SERVICE DATA WITH ALL IMAGES ASSIGNED ───
 const SERVICE_DATA = {
@@ -33,8 +37,7 @@ const SERVICE_DATA = {
     priceDisplay: '50 JD',
     durationDisplay: '60 min',
     icon: '✦',
-    gradient: 'linear-gradient(135deg, #FFD3B6 0%, #FF8C94 50%, #D28C78 100%)',
-    img: liverImg
+    gradient: 'linear-gradient(135deg, #FFD3B6 0%, #FF8C94 50%, #D28C78 100%)'
   },
   livercolon: {
     id: 24,
@@ -60,7 +63,6 @@ const SERVICE_DATA = {
     durationDisplay: '1 - 3 hours',
     icon: '💉',
     gradient: 'linear-gradient(135deg, #A8E6CF 0%, #DCEDC1 50%, #FFD3B6 100%)',
-    img: ivDripImg
   },
   consultation: {
     id: 21,
@@ -72,8 +74,7 @@ const SERVICE_DATA = {
     priceDisplay: '15 JD',
     durationDisplay: '30 min',
     icon: '📋',
-    gradient: 'linear-gradient(135deg, #D2B48C 0%, #FFD3B6 50%, #FFAAA5 100%)',
-    img: consultationImg
+    gradient: 'linear-gradient(135deg, #D2B48C 0%, #FFD3B6 50%, #FFAAA5 100%)'
   },
   candida: {
     id: 26,
@@ -124,8 +125,7 @@ const SERVICE_DATA = {
     priceDisplay: '25 JD',
     durationDisplay: '10 min',
     icon: '◎',
-    gradient: 'linear-gradient(135deg, #FAE3D9 0%, #FFB6B9 50%, #786050 100%)',
-    img: oilMassageImg
+    gradient: 'linear-gradient(135deg, #FAE3D9 0%, #FFB6B9 50%, #786050 100%)'
   },
   probiotics: {
     id: 30,
@@ -137,8 +137,7 @@ const SERVICE_DATA = {
     priceDisplay: '25 JD',
     durationDisplay: '10 min',
     icon: '◎',
-    gradient: 'linear-gradient(135deg, #BBDED6 0%, #8B5040 50%, #887058 100%)',
-    img: probioticImg
+    gradient: 'linear-gradient(135deg, #BBDED6 0%, #8B5040 50%, #887058 100%)'
   },
   lymphatic: {
     id: 11,
@@ -151,7 +150,7 @@ const SERVICE_DATA = {
     durationDisplay: '60 min',
     icon: '✧',
     gradient: 'linear-gradient(135deg, #D8C0A0 0%, #FFB6B9 50%, #8B7860 100%)',
-    img: lymphaticImg
+    img: massageImg
   },
   massage: {
     id: 12,
@@ -177,7 +176,7 @@ const SERVICE_DATA = {
     durationDisplay: '60 min',
     icon: '👣',
     gradient: 'linear-gradient(135deg, #E0C8A8 0%, #D2B48C 50%, #A08868 100%)',
-    img: reflexologyImg
+    img: massageImg
   },
   relaxing: {
     id: 14,
@@ -190,7 +189,7 @@ const SERVICE_DATA = {
     durationDisplay: '60 min',
     icon: '🌸',
     gradient: 'linear-gradient(135deg, #F0C0B8 0%, #E2A9A1 50%, #C08878 100%)',
-    img: relaxingImg
+    img: massageImg
   },
   deeptissue: {
     id: 18,
@@ -203,7 +202,7 @@ const SERVICE_DATA = {
     durationDisplay: '60 min',
     icon: '✦',
     gradient: 'linear-gradient(135deg, #A89896 0%, #FFD3B6 50%, #685C5A 100%)',
-    img: deepTissueImg
+    img: massageImg
   },
   abdominal: {
     id: 15,
@@ -216,7 +215,7 @@ const SERVICE_DATA = {
     durationDisplay: '60 min',
     icon: '💆',
     gradient: 'linear-gradient(135deg, #F0B8B0 0%, #E2A9A1 50%, #B88078 100%)',
-    img: abdominalImg
+    img: massageImg
   },
   acupuncture: {
     id: 16,
@@ -289,6 +288,8 @@ const FILTERS = [
 export default function Services() {
   const [filter, setFilter] = useState('SERVICES');
   const [activeItem, setActiveItem] = useState(null);
+  const [prevActiveItem, setPrevActiveItem] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const filterWrapperRef = useRef(null);
   const filterRefs = useRef([]);
@@ -327,6 +328,20 @@ export default function Services() {
     }
   }, [items, activeItem]);
 
+  // Transition hook: trigger fade/scale transition when active item changes
+  useEffect(() => {
+    if (activeItem && !prevActiveItem) {
+      setPrevActiveItem(activeItem);
+    } else if (activeItem && activeItem.id !== prevActiveItem?.id) {
+      setIsAnimating(true);
+      const timer = setTimeout(() => {
+        setPrevActiveItem(activeItem);
+        setIsAnimating(false);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [activeItem, prevActiveItem]);
+
   const handleSelectItem = (item) => {
     setActiveItem(item);
   };
@@ -339,15 +354,14 @@ export default function Services() {
     }
   };
 
-  // Determine background image
-  const getBackgroundImage = () => {
-    if (filter === 'PACKAGE') {
+  // Determine background image for any given item
+  const getBackgroundImage = (item) => {
+    if (!item) return null;
+    if (item.type === 'package') {
       return sixSensesImg;
     }
-    return activeItem?.img || null;
+    return item.img || null;
   };
-
-  const bgImage = getBackgroundImage();
 
   const isActive = (item) => activeItem?.id === item.id;
 
@@ -404,32 +418,69 @@ export default function Services() {
           {/* LEFT — Clean Image Display (NO text overlay) */}
           <div className="w-full lg:w-[55%] xl:w-[52%]">
             <div className="lg:sticky lg:top-8">
-              <div className="relative w-full h-[320px] md:h-[420px] lg:h-[640px] rounded-[28px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.18)]">
+              <div className="relative w-full h-[320px] md:h-[420px] lg:h-[640px] rounded-[28px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.18)] bg-[#f5f3f0]">
 
-                {/* Background Image */}
-                {bgImage ? (
-                  <img
-                    src={bgImage}
-                    alt={activeItem?.title || 'Six Senses'}
-                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
-                  />
-                ) : (
+                {/* 1. STATIC BACKGROUND LAYER (Previous Active Item) */}
+                {prevActiveItem && (
+                  <div className="absolute inset-0 w-full h-full z-0">
+                    {getBackgroundImage(prevActiveItem) ? (
+                      <img
+                        src={getBackgroundImage(prevActiveItem)}
+                        alt={prevActiveItem.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div
+                        className="absolute inset-0 w-full h-full"
+                        style={{ background: prevActiveItem.gradient || 'linear-gradient(135deg, #8B7050, #D2B48C)' }}
+                      >
+                        <div className="absolute inset-0 opacity-10" style={{
+                          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)`,
+                          backgroundSize: '40px 40px'
+                        }} />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-[140px] lg:text-[180px] opacity-15 select-none">{prevActiveItem.icon || '✨'}</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* 2. ANIMATING FOREGROUND LAYER (Current Active Item) */}
+                {activeItem && (
                   <div
-                    className="absolute inset-0 w-full h-full"
-                    style={{ background: activeItem?.gradient || 'linear-gradient(135deg, #8B7050, #D2B48C)' }}
+                    key={activeItem.id}
+                    className={`absolute inset-0 w-full h-full ${isAnimating
+                        ? 'z-10 animate-[fadeIn_0.5s_ease-in-out_forwards]'
+                        : 'z-10'
+                      }`}
                   >
-                    <div className="absolute inset-0 opacity-10" style={{
-                      backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)`,
-                      backgroundSize: '40px 40px'
-                    }} />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-[140px] lg:text-[180px] opacity-15 select-none">{activeItem?.icon || '✨'}</span>
-                    </div>
+                    {/* Content */}
+                    {getBackgroundImage(activeItem) ? (
+                      <img
+                        src={getBackgroundImage(activeItem)}
+                        alt={activeItem.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div
+                        className="absolute inset-0 w-full h-full"
+                        style={{ background: activeItem.gradient || 'linear-gradient(135deg, #8B7050, #D2B48C)' }}
+                      >
+                        <div className="absolute inset-0 opacity-10" style={{
+                          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)`,
+                          backgroundSize: '40px 40px'
+                        }} />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-[140px] lg:text-[180px] opacity-15 select-none">{activeItem.icon || '✨'}</span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
 
                 {/* Subtle vignette for depth only */}
-                <div className="absolute inset-0 pointer-events-none" style={{
+                <div className="absolute inset-0 pointer-events-none z-30" style={{
                   boxShadow: 'inset 0 0 120px rgba(0,0,0,0.12)'
                 }} />
               </div>
@@ -596,6 +647,15 @@ export default function Services() {
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
         
         .font-serif { font-family: 'Playfair Display', serif; }
+
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
       `}</style>
     </section>
   );
