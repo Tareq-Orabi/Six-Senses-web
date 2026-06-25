@@ -275,26 +275,16 @@ export default function Faq() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
 
-        {/* Bilingual Header Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 text-center md:text-left reveal">
-          <div className="flex flex-col justify-center items-center md:items-start">
-            <span className="font-sans text-[11px] tracking-[0.25em] uppercase text-rose font-medium mb-3">
-              FAQ · Frequently Asked Questions
-            </span>
-            <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl text-brown leading-tight italic">
-              Curious Minds, <br />
-              <span className="not-italic text-rose">Clear Paths</span>
-            </h2>
-          </div>
-          <div className="flex flex-col justify-center items-center md:items-end text-center md:text-right" dir="rtl">
-            <span className="font-sans text-[11px] tracking-[0.25em] uppercase text-rose font-medium mb-3">
-              الأسئلة الشائعة · إجابات واضحة
-            </span>
-            <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl text-brown leading-tight italic">
-              طريق العافية <br />
-              <span className="not-italic text-rose">يبدأ بوضوح</span>
-            </h2>
-          </div>
+        {/* Header Section */}
+        <div className="text-center max-w-[750px] mx-auto mb-20 reveal">
+          <span className="font-sans text-[11px] tracking-[0.25em] uppercase text-rose font-medium mb-3 block">
+            FAQ · Frequently Asked Questions
+          </span>
+          <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl text-brown leading-tight italic mb-6">
+            Curious Minds, <br />
+            <span className="not-italic text-rose">Clear Paths</span>
+          </h2>
+          <div className="w-16 h-[1px] bg-rose/40 mx-auto"></div>
         </div>
 
         {/* Interactive FAQ Dashboard */}
@@ -394,13 +384,12 @@ export default function Faq() {
                     <span className="text-sm select-none">{item.icon}</span>
                   </div>
 
-                  {/* Bilingual Tooltip Overlay on hover */}
+                  {/* Tooltip Overlay on hover */}
                   <div
-                    className={`absolute bottom-12 left-1/2 -translate-x-1/2 bg-brown text-white text-[10px] py-2 px-3 rounded-xl shadow-xl w-32 text-center pointer-events-none transition-all duration-300 flex flex-col gap-0.5 z-50 ${hoveredNode === item.id ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible'
+                    className={`absolute bottom-12 left-1/2 -translate-x-1/2 bg-brown text-white text-[10px] py-2 px-3 rounded-xl shadow-xl w-32 text-center pointer-events-none transition-all duration-300 z-50 ${hoveredNode === item.id ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible'
                       }`}
                   >
                     <span className="font-sans font-medium">{item.labelEn}</span>
-                    <span className="font-sans border-t border-white/10 pt-0.5 opacity-80" dir="rtl">{item.labelAr}</span>
                     {/* Tooltip arrow */}
                     <div className="w-2 h-2 bg-brown rotate-45 absolute bottom-[-4px] left-1/2 -translate-x-1/2" />
                   </div>
@@ -409,18 +398,16 @@ export default function Faq() {
             })}
           </div>
 
-          {/* Symmetrical Dual-Language FAQ Portal Card */}
-          <div className="w-full flex-1 max-w-4xl relative min-h-[320px] md:min-h-[260px] flex items-center">
-            <div className="absolute inset-0 bg-white/40 backdrop-blur-md rounded-[32px] border border-white/50 shadow-[0_24px_50px_rgba(92,64,51,0.06)] animate-pulse-slow" />
+          {/* Symmetrical FAQ Portal Card */}
+          <div className="w-full flex-1 max-w-2xl relative min-h-[260px] flex items-center">
+            <div className="absolute inset-0 bg-white/40 backdrop-blur-md rounded-[32px] border border-white/50 shadow-[0_24px_50px_rgba(92,64,51,0.06)]" />
 
-            {/* Dynamic Bilingual Card Content */}
+            {/* Dynamic Card Content */}
             <div className="relative z-10 p-8 md:p-12 w-full">
               <div
-                className={`grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 md:divide-x md:divide-tan/20 items-stretch transition-all duration-300 transform ${isTransitioning ? 'opacity-0 translate-y-4 filter blur-sm' : 'opacity-100 translate-y-0 filter blur-0'
+                className={`transition-all duration-300 transform ${isTransitioning ? 'opacity-0 translate-y-4 filter blur-sm' : 'opacity-100 translate-y-0 filter blur-0'
                   }`}
               >
-
-                {/* Left Side: English Panel */}
                 <div className="flex flex-col justify-between text-left pr-2">
                   <div>
                     <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-rose font-semibold block mb-4">
@@ -434,22 +421,6 @@ export default function Faq() {
                     </p>
                   </div>
                 </div>
-
-                {/* Right Side: Arabic Panel */}
-                <div className="flex flex-col justify-between text-right pl-2 md:pl-12" dir="rtl">
-                  <div>
-                    <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-rose font-semibold block mb-4">
-                      {currentFaq.labelAr}
-                    </span>
-                    <h3 className="font-serif text-2xl lg:text-3xl text-brown font-light leading-snug mb-5">
-                      {currentFaq.ar.question}
-                    </h3>
-                    <p className="font-sans text-sm md:text-base font-light text-taupe leading-relaxed whitespace-pre-line">
-                      {currentFaq.ar.answer}
-                    </p>
-                  </div>
-                </div>
-
               </div>
             </div>
 

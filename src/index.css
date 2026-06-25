@@ -397,10 +397,7 @@
 }
 @keyframes svcShowIn { 0% { opacity: 0; transform: translateY(20px) scale(0.98); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
 
-.svc-showcase-split { display: grid; grid-template-columns: 65% 35%; min-height: 480px; }
-
 /* Visual Side */
-.svc-showcase-visual { position: relative; display: flex; align-items: center; justify-content: center; padding: 3rem; overflow: hidden; }
 .svc-showcase-gradient { position: absolute; inset: 0; transition: transform 0.8s ease; }
 .svc-showcase:hover .svc-showcase-gradient { transform: scale(1.05); }
 .svc-showcase-pattern { position: absolute; inset: 0; opacity: 0.3; background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px; }

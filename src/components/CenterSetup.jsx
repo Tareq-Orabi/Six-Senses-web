@@ -1,5 +1,5 @@
 
-import wallImg from '../assets/tanWallbackground.jpg';
+import wallImg from '../assets/wallImg.jpeg';
 
 export default function CenterSetup() {
   const helpItems = [
@@ -44,10 +44,12 @@ export default function CenterSetup() {
       {/* STICKY BACKGROUND */}
       <div className="sticky top-0 h-screen w-full overflow-hidden z-0">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-luminosity"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${wallImg})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A]/80 via-[#1A1A1A]/40 to-[#1A1A1A]/90" />
+        {/* Blending Gradients (Tan / Cream) */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#FDFBF7] via-[#D2B48C]/1 to-transparent pointer-events-none z-10" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#faf8f5] via-[#D2B48C]/1 to-transparent pointer-events-none z-10" />
 
         {/* Decorative Orbs */}
         <div className="absolute pointer-events-none rounded-full animate-float2" style={{ width: 450, height: 450, top: '10%', left: -150, background: 'radial-gradient(circle, rgba(210,180,140,0.15) 0%, transparent 70%)', filter: 'blur(55px)' }} />
@@ -149,10 +151,10 @@ export default function CenterSetup() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
                   <a href="mailto:coloncleansejo@gmail.com?subject=Colon%20Hydrotherapy%20Center%20Setup%20Consultation" className="inline-flex items-center gap-2.5 py-4 px-8 rounded-full no-underline text-[11px] font-bold tracking-[0.2em] uppercase text-white bg-rose transition-all duration-300 hover:bg-[#d49590] hover:-translate-y-1 shadow-[0_10px_30px_rgba(226,169,161,0.3)]">
-                    Book a Consultation
+                    Email Us
                   </a>
-                  <a href="https://wa.me/962798705760" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2.5 py-4 px-8 rounded-full no-underline text-[11px] font-bold tracking-[0.2em] uppercase text-cream bg-brown transition-all duration-300 hover:-translate-y-1 shadow-[0_10px_30px_rgba(61,42,32,0.2)] hover:text-rose">
-                    WhatsApp Us
+                  <a href="tel:0798705760" className="inline-flex items-center gap-2.5 py-4 px-8 rounded-full no-underline text-[11px] font-bold tracking-[0.2em] uppercase text-cream bg-brown transition-all duration-300 hover:-translate-y-1 shadow-[0_10px_30px_rgba(61,42,32,0.2)] hover:text-rose">
+                    Call 0798705760
                   </a>
                 </div>
               </div>

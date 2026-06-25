@@ -72,7 +72,7 @@ export default function Introduction() {
             <div>
               <div className="text-[13px] font-semibold" style={{ color: '#3d2a20', letterSpacing: '0.04em' }}>Lina</div>
               <div className="text-[10px] tracking-[0.16em] uppercase mt-[3px]" style={{ color: '#9a7f74' }}>
-                Founder & Lead Specialist, Six Senses
+                Owner & Colon Cleansing Specialist
               </div>
             </div>
           </div>

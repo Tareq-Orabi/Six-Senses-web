@@ -225,7 +225,7 @@ export default function Hero() {
                 }}
               />
               <span className="text-[9.5px] font-bold tracking-[0.2em] uppercase" style={{ color: '#3d2a20' }}>
-                Wellness Tour
+                Six Senses Tour
               </span>
             </div>
 

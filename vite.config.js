@@ -9,6 +9,7 @@ export default defineConfig({
     tailwindcss(),
   ],
   base: '/Six-Senses-web/',
+  assetsInclude: ['**/*.glb'],
   server: {
     watch: {
       ignored: ['**/src/assets/*.MOV', '**/src/assets/*.mov'],
