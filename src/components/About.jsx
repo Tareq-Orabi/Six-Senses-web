@@ -15,7 +15,6 @@ export default function About() {
             {/* Dark vignette overlay for text readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-brown via-brown/50 to-brown/10 pointer-events-none" />
 
-            <div className="absolute inset-0 overflow-hidden rounded-[3rem] before:content-['SS'] before:font-serif before:italic before:text-[18rem] before:font-light before:text-white/4 before:absolute before:-top-[60px] before:-left-[20px] before:leading-none before:tracking-[-20px] before:pointer-events-none"></div>
             <div className="absolute w-[300px] h-[300px] rounded-full -top-[80px] -right-[80px] bg-[radial-gradient(circle,rgba(226,169,161,0.3)_0%,transparent_70%)] blur-[40px]"></div>
             <div style={{ position: 'relative', zIndex: 1 }}>
               <div className="text-[0.58rem] font-bold tracking-[0.3em] uppercase text-rose mb-2.5">Our Philosophy</div>
